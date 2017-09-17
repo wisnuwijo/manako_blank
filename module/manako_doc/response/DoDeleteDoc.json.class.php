@@ -1,0 +1,22 @@
+<?php
+/** 
+* @author Abdul R. Wahid
+* @copyright Copyright (c) 2015, PT Gamatechno Indonesia
+* @license http://gtfw.gamatechno.com/#license
+**/
+
+require_once Configuration::Instance()->GetValue( 'application', 'docroot') . 'module/manako_doc/response/ProcessDoc.proc.class.php';
+
+class DoDeleteDoc extends JsonResponse {
+
+   function ProcessRequest() {
+
+      $docObj = new ProcessDoc();
+      
+      $response = $docObj->Delete();
+      
+      return $response;
+    }
+
+}
+?>

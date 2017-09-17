@@ -1,0 +1,132 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Kontak</h2>
+    </div>
+</div>
+
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {JUDUL} Kontak
+                <p class="action-wrap">
+                    <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Kembali</a>
+                    <a href="{URL_EDIT}" class="xhr dest_subcontent-element btn btn-info">Edit</a>
+                </p> 
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <img src="{CONTACTQRCODE}" width="160px" class="img-responsive img-rounded pull-right"> 
+                </div>
+                <div class="col-xs-12 col-md-9">    
+                    <h2>
+                        <strong>{CONTACTNAMEFIRST}</strong> {CONTACTNAMELAST}
+                    </h2>
+                    <hr class="hr-sm">
+                    <h3>
+                        <small>
+                          {POSISINAME} {CONTACTPOSISIDET}<br> 
+                          <strong><a class="xhr dest_subcontent-element" href="{URL_CLIENT}">{CLIENTNAME}</a></strong>
+                        </small>
+                    </h3>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-12 col-md-9 col-md-push-3">
+                    <div class="row">
+                        <label class="col-md-4 control-label">Nama Depan&nbsp;<span class="pull-right"> :</span></label>
+                        <div class="col-md-8">
+                            <p>{CONTACTNAMEFIRST}</p>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <label class="col-md-4 control-label">Nama Belakang&nbsp;<span class="pull-right"> :</span></label>
+                        <div class="col-md-8">
+                            <p>{CONTACTNAMELAST}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 control-label">Email Kontak&nbsp;<span class="pull-right"> :</span></label>
+                        <div class="col-md-8">
+                            <p>{CONTACTMAIL}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 control-label">Telepon Kontak&nbsp;<span class="pull-right"> :</span></label>
+                        <div class="col-md-8">
+                            <p>{CONTACTMOBILE}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 control-label">Asal Kontak (PT/Instansi)&nbsp;<span class="pull-right"> :</span></label>
+                        <div class="col-md-8">
+                            <p>{CLIENTNAME}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 control-label">Kelompok Posisi Kontak&nbsp;<span class="pull-right"> :</span></label>
+                        <div class="col-md-8">
+                            <p>{POSISINAME}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 control-label">Posisi Kontak&nbsp;<span class="pull-right"> :</span></label>
+                        <div class="col-md-8">
+                            <p>{CONTACTPOSISIDET}</p>
+                        </div>
+                    </div>
+                <!-- patTemplate:tmpl name="data_contact_det_item" -->
+                    <div class="row">
+                        <label class="col-md-4 control-label"><i class="{CONTACTDET_CONTACTFIELDICON} fa-fw"></i>&nbsp;{CONTACTDET_CONTACTFIELDLABEL}</label>
+                        <div class="col-md-8">
+                            <p>{CONTACTDET_CONTACTDETVALUE}</p>
+                        </div>
+                    </div>                      
+                <!-- /patTemplate:tmpl -->                     
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>Petunjuk:</strong>
+      </div>
+      <div class="panel-body" style="width: 1000px;">
+        <div class="row">
+          <div class="col-lg-6" style="width: 1000px;">
+            <div class="petunjuk-area">
+              <ul>
+               <li>Anda dapat menyimpan kontak ke gadget anda dengan memindai (scan) qrcode pada setiap detail kontak.</li>
+               <li>Jika anda menggunakan android, dan gadget android anda tidak memiliki aplikasi bawaan untuk memindai (scan) qrcode, direkomendasikan download aplikasi <a href="https://play.google.com/store/apps/details?id=de.gavitec.android" target="_blank">NeoReader</a> di Google Play. </li>
+               <li>Jika anda menggunakan windows phone, gunakan fitur Bing Vision pada aplikasi kamera.</li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div> 
+
+
+<style>
+    .action-wrap {
+         margin-top: -7px;
+         float: right;
+    }
+</style>
+<!-- /patTemplate:tmpl -->

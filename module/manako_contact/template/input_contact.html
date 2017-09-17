@@ -1,0 +1,189 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Kontak</h2>
+    </div>
+</div>
+
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {JUDUL} Kontak
+            </div>
+            <div class="panel-body">   
+                <form method="POST" action="{URL_ACTION}" class="xhr_simple_form dest_subcontent-element form-horizontal" id="frmInput">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Nama Kontak*</label>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" name="contactNameFirst" value="{CONTACTNAMEFIRST}" maxlength="20" placeholder="Nama Depan" required/>
+                                    <input type="hidden" name="data-id" value="{ID}"  />
+                                    <input type="hidden" name="idd" value="{IDD}"  />
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" name="contactNameLast" value="{CONTACTNAMELAST}" maxlength="20" placeholder="Nama Belakang"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">E-mail Kontak</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="contactMail" name="contactMail" value="{CONTACTMAIL}" maxlength="50" placeholder="E-mail"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Telepon Kontak</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="contactMobile" name="contactMobile" value="{CONTACTMOBILE}" maxlength="15" placeholder="Nomor Telepon"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Asal Kontak (PT/Instansi)*</label>
+                        <div class="col-md-9">
+                          <!-- patTemplate:gtfwrendermodule name="contactClientNick" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Kelompok Posisi Kontak*</label>
+                        <div class="col-md-9">
+                          <!-- patTemplate:gtfwrendermodule name="contactPosisiCode" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Posisi Kontak</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" id="contactPosisiDet" name="contactPosisiDet" value="{CONTACTPOSISIDET}" maxlength="50" placeholder="Posisi/Jabatan Kontak"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label label-contact-info">Lainnya</label>
+                        <div class="col-md-9">
+                            <div class="row" id="contact-info">
+                                <div class="col-md-11" id="contact-info-area">
+                                <!-- patTemplate:tmpl name="data_contact_det_item" -->
+                                    <div class="row bs-callout bs-callout-contact-info alert alert-dismissible fade in">
+                                        <button type="button" class="row close controls-contact-info" data-dismiss="alert" aria-label="Close" title="Hapus Info"><i aria-hidden="true">&times;</i></button>
+                                        <div class="col-md-3">
+                                          <label class="control-label">Label info</label>
+                                                <select name="contactDetContactFieldCode[]" id="contactDetContactFieldCode{CONTACTDET_COUNTER}" class="form-control input-select2 select2-exclusive-1">
+                                                <!-- patTemplate:tmpl name="listField" -->
+                                                    <option value="{LISTFIELD_VALUE}" {LISTFIELD_ATTR}>{LISTFIELD}</option>
+                                                <!-- /patTemplate:tmpl -->       
+                                                </select>                                                                          
+                                        </div>
+                                        <div class="col-md-3 hidden">
+                                            <label class="control-label">Isi info</label>
+                                                <select name="contactDetValueCat[]" id="contactDetValueCat{CONTACTDET_COUNTER}" class="form-control input-select2 select2-exclusive-1">
+                                                <!-- patTemplate:tmpl name="listValueCat" -->
+                                                    <option value="{LISTVALUECAT_VALUE}" {LISTVALUECAT_ATTR}>{LISTVALUECAT}</option>
+                                                <!-- /patTemplate:tmpl -->       
+                                                </select> 
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">Detail isi info</label>
+                                            <input type="text" class="form-control detValue" id="contactDetValue{CONTACTDET_COUNTER}" name="contactDetValue[]" value="{CONTACTDET_VALUE}" maxlength="50" placeholder=""/>
+                                        </div>                                       
+                                    </div>
+                                    <script>
+                                        $(function(){
+                                            $("#contactDetContactFieldCode{CONTACTDET_COUNTER}").val("{CONTACTDET_CONTACTFIELDCODE}");
+                                            $("#contactDetValueCat{CONTACTDET_COUNTER}").val("{CONTACTDET_CONTACTDETVALUECAT}");
+                                        })
+                                    </script>                                    
+                                <!-- /patTemplate:tmpl -->
+                                    <div class="row bs-callout bs-callout-contact-info alert alert-dismissible fade hidden" id="contact-info-template">
+                                        <button type="button" class="row controls-contact-info close" data-dismiss="alert" aria-label="Close" title="Hapus Info"><i aria-hidden="true">&times;</i></button>                                        
+                                        <div class="col-md-3">
+                                          <label class="control-label">Label info</label>
+                                                <!-- patTemplate:gtfwrendermodule name="contactDetContactFieldCode" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->                                                                        
+                                        </div>
+                                        <div class="col-md-3 hidden">
+                                            <label class="control-label">Isi info</label>
+                                                <!-- patTemplate:gtfwrendermodule name="contactDetValueCat" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">Detail isi info</label>
+                                            <input type="text" class="form-control detValue" id="contactDetValue" name="contactDetValue[]" value="{CONTACTDET_VALUE}" maxlength="50" placeholder="" disabled/>
+                                        </div>                                       
+                                    </div>                                
+                                </div>
+                                <div class="col-md-1 text-right">
+                                    <a class="btn btn-default" title="Tambah Informasi" id="contact-info-add"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-center">
+                            <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Batal</a>
+                            <button class="btn btn-success" type="submit">Simpan</button>
+                        </div>
+                    </div>   
+                </form>        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>Petunjuk:</strong>
+      </div>
+      <div class="panel-body" style="width: 1000px;">
+        <div class="row">
+          <div class="col-lg-6" style="width: 1000px;">
+            <div class="petunjuk-area">
+              <ul>
+               <li>Tanda * menunjukkan bahwa field tersebut harus diisi. </li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<script>
+    $(function(){
+        $(".select2-exclusive-1").select2({
+            language : "id",
+            width : "100%",
+
+        }).trigger("change");
+    })
+
+    //Add button
+    contactInfo = $('#contact-info-area').find('#contact-info-template').clone().wrap('<div/>').parent().html();
+    contactInfo = $(contactInfo);
+    contactInfo .find('input').val('').removeAttr('disabled');
+    contactInfo .find('span').remove();
+    $("#contact-info").on("click", "#contact-info-add", function(e)
+    {
+        
+        e.preventDefault();
+        
+        var controlForm = $('#contact-info-area'),
+            newEntry    = contactInfo 
+                    .clone()
+                    .removeAttr('id')
+                    .removeClass('hidden')
+                    .addClass('in')             
+                    .appendTo(controlForm)
+                    .insertBefore('#contact-info-template');       
+    })    
+</script> 
+<!-- /patTemplate:tmpl -->

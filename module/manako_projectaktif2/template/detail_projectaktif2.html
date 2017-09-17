@@ -1,0 +1,151 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Project</h2>
+    </div>
+</div>
+
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {JUDUL} Project
+                <p class="action-wrap">
+                    <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Kembali</a>
+                    <a href="{URL_EDIT}" class="xhr dest_subcontent-element btn btn-info">Edit</a>
+                </p>
+            </div>
+            <div class="panel-body">
+            <div class="row">
+                <!-- patTemplate:tmpl name="data_project_item" -->
+                <div class="col-xs-12">
+                    <div class="alert alert-{PROJECT_STATUS_CSS}"><strong>{PROJECT_STATUS_GROUP}</strong> dari {PROJECT_PROJECTDATECONSTART} sampai {PROJECT_DATE_END} {PROJECT_STATUS_DETAIL}</div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Nama Project</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTNAME}</p>
+                            <input type="hidden" name="data-id" value="{PROJECT_ID}"  />
+                            <input type="hidden" name="idd" value="{PROJECT_IDD}"  />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Nick Project</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTNICK}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Perguruan Tinggi</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PETE_NAME}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Dokumentasi Proyek</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_DOKPRO_NAME}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Dokumen Kontrak</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_DOKCON_NAME}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Deskripsi Project</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTDES}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Mulai Kontrak</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTDATECONSTART}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Akhir Kontrak</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTDATECONEND}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Akhir Maintenance</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTDATEMTCEND}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Model Bisnis</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_BISNISMODEL}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">JOB Order</label>
+                        <div class="col-sm-8">
+                            <a href="{PROJECT_PROJECTORDER}" target="_blank">{PROJECT_PROJECTORDER}</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Account Manager</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PERSONALNAME}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Tanggal BAST</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTDATEBAST}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Pakai Toleransi</label>
+                        <div class="col-sm-8">
+                          <p>{PROJECT_PROJECTTOLEUSE}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Toleransi Mulai</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTDATETOLESTART}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Toleransi Selesai</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTDATETOLEEND}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Keterangan</label>
+                        <div class="col-sm-8">
+                            <p>{PROJECT_PROJECTNOTE}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /patTemplate:tmpl -->
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .action-wrap {
+         margin-top: -7px;
+         float: right;
+    }
+</style>
+<!-- /patTemplate:tmpl -->

@@ -1,0 +1,127 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Hotel</h2>
+    </div>
+</div>
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				{JUDUL}
+			</div>
+			<div class="panel-body">
+				<form method="POST" action="{URL_ACTION}" class="xhr_simple_form dest_subcontent-element form-horizontal" id="frmInput">
+				<!-- patTemplate:tmpl name="data" -->
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Nama Hotel*</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                		<input type="hidden" name="hotelId" value="{DATA_HOTELID}">
+                		<input type="text" class="form-control" name="hotelNama" value="{DATA_HOTELNAMA}" required>
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Provinsi/Kota Client*</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                	  <!-- patTemplate:gtfwrendermodule name="kotaKode" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Alamat Hotel*</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                		<input type="text" class="form-control" name="hotelAlamat" value="{DATA_HOTELALAMAT}" required>
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Nomor Telepon Hotel*</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                		<div class="input-group">
+                  		<input type="text" class="form-control" name="hotelPhone" value="{DATA_HOTELPHONE}" required>
+                			<div class="input-group-addon">
+                				isi dengan angka
+                			</div>
+                		</div>
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Perkiraan Harga  Hotel*</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                		<div class="input-group">
+                      <div class="input-group-addon">
+                        Rp
+                      </div>
+                  		<input type="text" class="form-control" name="hotelHarga" value="{DATA_HOTELHARGA}" required>
+											<div class="input-group-addon">
+												isi dengan angka
+                			</div>	                        			
+                		</div>
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Fasilitas Hotel*</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                		<textarea class="form-control" name="hotelFasilitas" rows="3">{DATA_HOTELFASILITAS}</textarea>
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Keterangan Hotel*</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                		<textarea class="form-control" name="hotelKeterangan" rows="3">{DATA_HOTELKETERANGAN}</textarea>
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Client</label>
+            <div class="col-lg-9">
+              	<div class="row">
+                	<div class="col-lg-12">
+                		<!-- patTemplate:gtfwrendermodule name="clientId" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                	</div>
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+        	<div class="text-center">
+        		<a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Batal</a>
+        		<button class="btn btn-success" type="submit">Simpan</button>
+        	</div>
+        </div>
+      <!-- /patTemplate:tmpl --> 
+      </form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /patTemplate:tmpl -->

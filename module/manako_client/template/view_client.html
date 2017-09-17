@@ -1,0 +1,231 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Client</h2>
+    </div>
+</div>
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="alert alert-{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+<div class="row">
+    <div class="col-lg-12">
+       <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="acrdHeadFilter">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#acrdClpsFilter" aria-expanded="{EXPAND}" aria-controls="acrdClpsFilter">
+                  <span class="fa fa-search"></span>
+                  &nbsp;Filter / Cari Data
+               </a>
+            </h4>
+          </div>
+          <div id="acrdClpsFilter" class="panel-collapse collapse {COLLAPSE}" role="tabpanel" aria-labelledby="acrdHeadFilter">
+            <div class="panel-body">
+               <form role="form" method="POST" action="{URL_SEARCH}" class="dataquest xhr_simple_form dest_subcontent-element" id="filterbox">
+                  <div class="row">
+                     <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                           <label>Provinsi Client</label>
+                           <!-- patTemplate:gtfwrendermodule name="provNama" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                           <label>Kota Client</label>
+                           <select name="kotaNama" id="kotaNama" class="input-select2 form-control" data-placeholder="Pilih Kabupaten/Kota" readonly="">
+                              <option value=""></option>
+                            </select>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                           <label>Nama Client</label>
+                           <input type="text" name="clientName" class="form-control input-sm" value="{FILTER_NAME}" size="30" />
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                           <label>Nick Client</label>
+                           <input type="text" name="clientNick" class="form-control input-sm" value="{FILTER_NICK}" size="30" /><br/>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-xs-12 text-center">
+                        <div class="visible-md visible-lg space-p"></div>
+                        <button class="btn btn-info btn-block" type="submit">Terapkan Filter</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Client
+                <p class="action-wrap">
+                    <a class="xhr dest_subcontent-element btn btn-success" href="{CLIENT_URL_ADD}" role="button" title="Tambah Client" tabindex="2"><span class="fa fa-plus"></span>&nbsp;Tambah</a>
+                </p>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="table-doc-jenis">
+                        <thead>
+                            <tr>
+                                <th class="th-no">No</th>
+                                <th class="th-aksi">Aksi</th>
+                                <th>Nama Client</th>
+                                <th>Nick Client</th>
+                                <th>Kategori Client</th>
+                                <th>Gforge Client</th>
+                                <th>Kota Client</th>
+                                <th>Status Client</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <!-- patTemplate:tmpl name="data_client" type="condition" conditionvar="CLIENT_EMPTY" -->
+                        <!-- patTemplate:sub condition="YES" -->
+                        <tr><td colspan="8" align="center"><em>-- Data tidak ditemukan --</em></td></tr>
+                        <!-- /patTemplate:sub -->
+                        <!-- patTemplate:sub condition="NO" -->
+                        <!-- patTemplate:tmpl name="data_client_item" -->
+                        <tr class="{CLIENT_CLASS_NAME}">
+                            <td>{CLIENT_NUMBER}</td>
+                            <td class="links">
+                                <div class="btn-toolbar">
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="xhr dest_subcontent-element btn btn-default" href="{CLIENT_URL_DETAIL}" title="Detail">
+                                            <span class="fa fa-list-alt fa-fw"></span>
+                                        </a>
+                                        <a class="xhr dest_subcontent-element btn btn-default" href="{CLIENT_URL_EDIT}" title="Ubah">
+                                            <span class="fa fa-pencil fa-fw"></span>
+                                        </a>
+                                        <a class="xhr dest_subcontent-element btn btn-default" href="{CLIENT_URL_STATUS}" title="{CLIENT_STATUS_TITLE}">
+                                            <span class="fa fa-toggle-{CLIENT_STATUS_ICON} fa-fw"></span>
+                                        </a>
+                                        <a class="xhr dest_subcontent-element btn btn-default" href="{CLIENT_URL_DELETE}" title="Hapus">
+                                            <span class="fa fa-trash-o fa-fw"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{CLIENT_CLIENTNAME}</td>
+                            <td>{CLIENT_CLIENTNICK}</td>
+                            <td>{CLIENT_CLIENTCATNAME}</td>
+                            <td>{CLIENT_GFORGENICKNAME}</td>
+                            <td><span title="{CLIENT_PROVNAMA}">{CLIENT_KOTANAMA}</span><br>
+                                <small><small><small>{CLIENT_PROVNAMA}</small></small></small>
+                            </td>
+                            <td>{CLIENT_CLIENTSTATUS}</td>
+                        </tr>
+                        <!-- /patTemplate:tmpl -->
+                        <!-- /patTemplate:sub -->
+                        <!-- /patTemplate:tmpl -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table-common td {
+        vertical-align: top;
+    }
+
+    .action-wrap {
+         margin-top: -7px;
+         float: right;
+    }
+
+    .space-p {
+      padding-bottom: 22px;
+    }
+
+    th {
+      text-align: center;
+      vertical-align: middle !important;
+    }
+    .th-no {
+      width: 25px;
+    }
+    .th-aksi {
+      width: 170px;
+    }
+</style>
+<script type="text/javascript">
+
+  var dropdownProv = $('#provNama');
+  var dropdownKota = $('#kotaNama');
+  var dataKota     = {DATAKOTA};
+  var currentKota  = "{CURRENTKOTA}";
+  var items        = [];
+  var selProvId    = "";
+  var kotaList     = 0;
+  var kotaListLen;
+  var content;
+  dropdownProv.change(function() {
+    items.length   = 0;
+    selProvId      = dropdownProv.val();
+    if (selProvId == "") {
+      kotaList     = 0;
+      kotaListLen  = 0;
+      dropdownKota.attr("readonly",true);
+    } else {
+      kotaList     = dataKota[selProvId];
+      kotaListLen  = Object.keys(kotaList).length;
+      dropdownKota.attr("readonly",false);
+    }
+    dropdownKota.empty().val("").trigger("change");
+
+    items.push('<option value=""></option>');
+    for (var i = 0; i < kotaListLen; i++) {
+      items.push('<option value="'+kotaList[i]["kota_id"]+'">'+kotaList[i]["kota_nama"]+'</option>');
+    };
+
+    content = items.join("");
+    dropdownKota.append(content);
+  }).trigger("change");
+
+  dropdownKota.select2({
+      language : "id",
+      width : "100%",
+
+  }).val(currentKota).trigger("change");
+
+  $(function () {
+    $('#table-doc-jenis').DataTable({
+      "paging": true,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "sort": false,
+      "autoWidth": false,
+      "processing": true,
+      "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+      "iDisplayLength": 25,
+      "pagingType": "full_numbers",
+      "language": {
+        "search": "Cari semua:",
+        "info": " Memuat _START_ sampai _END_ dari <strong>_TOTAL_</strong> entri",
+        "lengthMenu": "Tampilkan _MENU_ Entri",
+        "infoEmpty": "Memuat 0 entri",
+        "zeroRecords": "Tidak ada entri project.",
+        "infoFiltered": "(dari <strong>_MAX_</strong> total entri)",
+        "paginate": {
+          "previous": "<i class=\"fa fa-backward\"></i>",
+          "next": "<i class=\"fa fa-forward\"></i>",
+          "first": "<i class=\"fa fa-fast-backward\"></i>",
+          "last": "<i class=\"fa fa-fast-forward\"></i>"
+          }
+        }
+    });
+  });
+</script>
+<!-- /patTemplate:tmpl -->

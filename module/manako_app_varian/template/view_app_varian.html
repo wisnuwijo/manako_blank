@@ -1,0 +1,182 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Varian Aplikasi</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Aplikasi
+                <p class="action-wrap">
+                    <span><a class="xhr dest_subcontent-element btn btn-success" href="{URL_ADD}" role="button" title="Tambah Aplikasi" tabindex="2"><span class="fa fa-plus"></span><span class="hidden-xs">&nbsp;Tambah</span></a></span>
+                </p>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-striped table-bordered table-hover" id="table-app">
+                        <thead>
+                            <tr>
+                                <th class="th-no">No</th>
+                                <th class="th-aksi">Aksi</th>
+                                <th>Nama Varian</th>
+                                <th>Nick Varian</th>
+                                <th>Inisial Varian</th>
+                                <th>Logo (Icon)</th>
+                                <th>Logo (Type)</th>
+                                <th>Logo (Full)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table-common td {
+        vertical-align: top;
+    }
+
+    .action-wrap {
+         margin-top: -7px;
+         float: right;
+    }
+
+    .space-p {
+      padding-bottom: 22px;
+    }
+
+    th {
+      text-align: center;
+      vertical-align: middle !important;
+    }
+    .th-no {
+      width: 25px;
+    }
+    .th-aksi {
+      width: 105px;
+    }
+</style>
+<script type="text/javascript">
+    var urlData   = '{URL_DATA}';
+    var urlDelete = '{URL_DELETE}';
+    var urlEdit   = '{URL_EDIT}';
+
+/*
+    $('.action-wrap').affix({
+      offset: {
+        top: 160
+      }
+    }) */
+
+
+    var tApp;
+    tApp = $('#table-app').DataTable( {
+        "autoWidth": false,
+        "processing": true,
+        "serverSide": true,
+        "sort": false,
+        "dom": "<'row'<'col-xs-12 col-sm-5'l><'col-xs-12 col-sm-7'f>><'table-responsive't>r<'row'<'col-xs-12 col-md-6 text-center text-left-md'i><'col-xs-12 col-md-6 text-center text-right-md'p>>",
+        "aLengthMenu": [[2, 5, 10, 25, 50, -1], [2, 5, 10, 25, 50, "All"]],
+        "iDisplayLength": 25,
+        "ajax": {
+          "url": urlData,
+          "type":"GET"
+        },
+        "aoColumns": [
+            { "defaultContent": i },
+            { "aTargets": [0],
+              "mData": function (data) {
+                return {"varianName" : data.varianName, "varianNick" : data.varianNick};
+              },
+              "mRender": function ( data ) {
+                return '<div class="btn-group btn-group-sm"><a class="xhr dest_subcontent-element btn btn-default" href="' + urlEdit + data.varianNick +'" title="Ubah"><span class="fa fa-pencil"></span></a><a class="btn btn-default" title="Hapus" data-toggle="modal" data-target="#uniModal" data-action="Hapus" data-nick="'+ data.varianNick +'" data-name="'+data.varianName+'"><span class="fa fa-trash-o"></span></a></div>';
+              }
+            },
+            { "mData": "varianName" },
+            { "mData": "varianNick" },
+            { "mData": "varianInitial" },
+            { "mData": "varianLogoIcon" },
+            { "mData": "varianLogoType" },
+            { "mData": "varianLogoFull" }
+            ],
+          "pagingType": "full_numbers",
+          "language": {
+            "search": "Cari semua:",
+            "info": " Memuat _START_ sampai _END_ dari <strong>_TOTAL_</strong> entri",
+            "lengthMenu": "Tampilkan _MENU_ Entri",
+            "infoEmpty": "Memuat 0 entri",
+            "zeroRecords": "Tidak ada entri aplikasi yang memenuhi kriteria pencarian.",
+            "infoFiltered": "(dari <strong>_MAX_</strong> total entri)",
+            "paginate": {
+              "previous": "<i class=\"fa fa-backward\"></i>",
+              "next": "<i class=\"fa fa-forward\"></i>",
+              "first": "<i class=\"fa fa-fast-backward\"></i>",
+              "last": "<i class=\"fa fa-fast-forward\"></i>"
+            }
+          }
+    } );
+    tApp.on( 'draw', function () {
+        var no = $('#table-app').dataTable().api().page.info().start+1;
+        tApp.column(0, {search:'applied', order:'applied'}).nodes().each(
+          function (cell, i) {
+            cell.innerHTML = no+i;
+        } );
+        Behaviour.apply();
+    } );
+
+    function modalBody(dataAct, dataNick, dataName) {
+      if (dataAct == 'Hapus') {
+        content = '<p>Apakah anda yakin akan menghapus data <b>'+dataName+'</b> ?</p>';
+      };
+      return content;
+    }
+
+    function modalFooter(dataAct, dataNick) {
+      if (dataAct == 'Hapus') {
+        content = '<button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button><button type="button" class="btn btn-primary" onclick="postData(\''+urlDelete+'\',\''+dataNick+'\')">'+dataAct+'</button>';
+      };
+      return content;
+    }
+
+    function postData(url, identifier) {
+      Pace.track(function(){
+        $.ajax({
+              url : url,
+              type: "POST",
+              data: {"identifier" : identifier},
+              success:function(result) {
+                  $('#uniModal').modal('toggle');
+                  tApp.ajax.reload();
+                  alert(result.message);
+              },
+              error: function(data) {
+                  alert('Maaf aku gak bisa sama-sama kamu lagi, koneksi kita putus ! T-T');
+              }
+          });
+        });
+    }
+
+    $('#uniModal').on('show.bs.modal', function (event) {
+      var button   = $(event.relatedTarget);
+      var dataAct  = button.data('action');
+      var dataNick = button.data('nick');
+      var dataName = button.data('name');
+      var modal = $(this);
+      modal.find('.modal-title').text(dataAct + ' ' + dataName);
+      modal.find('.modal-body').empty();
+      modal.find('.modal-footer').empty();
+      modal.find('.modal-body').append(modalBody(dataAct, dataNick, dataName));
+      modal.find('.modal-footer').append(modalFooter(dataAct, dataNick));
+    })
+</script>
+<!-- /patTemplate:tmpl -->

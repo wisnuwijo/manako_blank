@@ -1,0 +1,86 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Contact Field</h2>
+    </div>
+</div>
+
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {JUDUL} Contact Field
+            </div>
+            <div class="panel-body">   
+                <form method="POST" action="{URL_ACTION}" class="xhr_simple_form dest_subcontent-element form-horizontal" id="frmInput">
+                  <!-- patTemplate:tmpl name="data_contact_field_item" -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Kode Contact Field*</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="contactFieldCode" value="{CONTACTFIELD_CONTACTFIELDCODE}" maxlength="8" required/>
+                            <input type="hidden" name="data-id" value="{CONTACTFIELD_CONTACTFIELDID}"  />
+                            <input type="hidden" name="idd" value="{CONTACTFIELD_IDD}"  />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Label Contact Field*</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="contactFieldLabel" value="{CONTACTFIELD_CONTACTFIELDLABEL}" maxlength="20" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tipe Contact Field*</label>
+                        <div class="col-sm-10">
+                            <!-- patTemplate:gtfwrendermodule name="contactFieldType" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Icon Contact Field*</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="contactFieldIcon" value="{CONTACTFIELD_CONTACTFIELDICON}" maxlength="20" required/>
+                        </div>
+                    </div>
+                  <!-- /patTemplate:tmpl -->  
+                    <div class="form-group">
+                        <div class="text-center">
+                            <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Batal</a>
+                            <button class="btn btn-success" type="submit">Simpan</button>
+                        </div>
+                    </div> 
+                </form>        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>Petunjuk:</strong>
+      </div>
+      <div class="panel-body" style="width: 1000px;">
+        <div class="row">
+          <div class="col-lg-6" style="width: 1000px;">
+            <div class="petunjuk-area">
+              <ul>
+               <li>Tanda * menunjukkan bahwa field tersebut harus diisi. </li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+
+<!-- /patTemplate:tmpl -->

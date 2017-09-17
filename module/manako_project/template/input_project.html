@@ -1,0 +1,172 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Project</h2>
+    </div>
+</div>
+
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {JUDUL} Project
+            </div>
+            <div class="panel-body">
+                <form method="POST" action="{URL_ACTION}" class="xhr_simple_form dest_subcontent-element form-horizontal" id="frmInput">
+                <!-- patTemplate:tmpl name="data_project_item" -->
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nama Project*</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="projectName" value="{PROJECT_PROJECTNAME}" maxlength="200" required/>
+                            <input type="hidden" name="data-id" value="{PROJECT_ID}"  />
+                            <input type="hidden" name="idd" value="{PROJECT_IDD}"  />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nick Project*</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="projectNick" value="{PROJECT_PROJECTNICK}" maxlength="100" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Perguruan Tinggi*</label>
+                        <div class="col-sm-9">
+                          <!-- patTemplate:gtfwrendermodule name="pete_id" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Dokumentasi Proyek*</label>
+                        <div class="col-sm-9">
+                          <!-- patTemplate:gtfwrendermodule name="dokpro_id" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Dokumen Kontrak*</label>
+                        <div class="col-sm-9">
+                          <!-- patTemplate:gtfwrendermodule name="dokcon_id" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Deskripsi Project</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" name="projectDes">{PROJECT_PROJECTDES}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Mulai Kontrak*</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control datepicker input-datepicker" data-provide="datepicker" name="projectDateConStart" value="{PROJECT_PROJECTDATECONSTART}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Akhir Kontrak*</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control datepicker input-datepicker" data-provide="datepicker" name="projectDateConEnd" value="{PROJECT_PROJECTDATECONEND}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Akhir Maintenance</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control datepicker input-datepicker" data-provide="datepicker" name="projectDateMtcEnd" value="{PROJECT_PROJECTDATEMTCEND}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Model Bisnis</label>
+                        <div class="col-sm-9">
+                          <!-- patTemplate:gtfwrendermodule name="projectModel" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">JOB Order</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="projectOrder" value="{PROJECT_PROJECTORDER}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Account Manager</label>
+                        <div class="col-sm-9">
+                          <!-- patTemplate:gtfwrendermodule name="projectAmId" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Tanggal BAST</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control datepicker input-datepicker" data-provide="datepicker" name="projectDateBast" value="{PROJECT_PROJECTDATEBAST}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Pakai Toleransi</label>
+                        <div class="col-sm-9">
+                          <!-- patTemplate:gtfwrendermodule name="projectToleUse" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Toleransi Mulai</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control datepicker input-datepicker" data-provide="datepicker" name="projectDateToleStart" value="{PROJECT_PROJECTDATETOLESTART}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Toleransi Selesai</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control datepicker input-datepicker" data-provide="datepicker" name="projectDateToleEnd" value="{PROJECT_PROJECTDATETOLEEND}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Keterangan</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" name="projectNote">{PROJECT_PROJECTNOTE}</textarea>
+                        </div>
+                    </div>
+                <!-- /patTemplate:tmpl -->
+                    <div class="form-group">
+                        <div class="text-center">
+                            <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Batal</a>
+                            <button class="btn btn-success" type="submit">Simpan</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>Petunjuk:</strong>
+      </div>
+      <div class="panel-body" style="width: 1000px;">
+        <div class="row">
+          <div class="col-lg-6" style="width: 1000px;">
+            <div class="petunjuk-area">
+              <ul>
+               <li>Tanda * menunjukkan bahwa field tersebut harus diisi. </li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<script>
+$(function(){
+    $('.input-datepicker').datepicker({
+        language : "id",
+        format : "dd-mm-yyyy",
+        //startView: "decade"
+    });
+});
+</script>
+<!-- /patTemplate:tmpl -->

@@ -1,0 +1,265 @@
+/*==========MAIN==========*/
+
+/*====WEB===*/
+#page-wrapper {
+	min-height: 100vh;
+	margin-top: -55px;
+	background-color: #ECF0F1;
+}
+.subcontent-element, #subcontent-element {
+	padding-top: 0px !important;
+	padding-left: 15px;
+	padding-right: 10px;
+	font-size: 15px;
+}
+
+/*==========BOOTSTRAP==========*/
+.page-header {
+	margin-top: 10px;
+	border-color: #CCCCCC;
+}
+
+.table-responsive {
+	overflow-x: auto;
+}
+
+/*Text*/
+@media (min-width: 768px) {
+  .text-left-sm {
+    text-align: left;
+  }
+  .text-center-sm {
+    text-align: center;
+  }
+  .text-right-sm {
+    text-align: right;
+  }
+}
+@media (min-width: 992px) {
+  .text-left-md {
+    text-align: left;
+  }
+  .text-center-md {
+    text-align: center;
+  }
+  .text-right-md {
+    text-align: right;
+  }
+}
+@media (min-width: 1200px) {
+  .text-left-lg {
+    text-align: left;
+  }
+  .text-center-lg {
+    text-align: center;
+  }
+  .text-right-lg {
+    text-align: right;
+  }
+}
+
+/*Callout*/
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+
+.bs-callout-contact {
+	height: 185px;
+}
+.bs-callout-controls {
+	position: absolute;
+	top: 22px;
+	right: 17px;
+	text-align: right;
+}
+.bs-callout-controls-button {
+	border-radius: 100%;
+	width: 45px;
+	height: 45px;
+	border: 0px;
+}
+.bs-callout-dropdown {
+	top: 35px;
+	right: 0px;
+	left: auto;
+}
+
+/*==========CUSTOM==========*/
+.btn-fav {
+	margin: 5px 0px;
+	padding: 8px 0px !important;
+	font-size: 16px;
+}
+
+.btn-fav-act {
+	margin: 5px 0px;
+}
+
+.sidebar-collapse {
+	padding-bottom: 55px;
+}
+
+.hr-sm {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.label-contact-info {
+	padding-bottom: 7px;
+}
+
+.bs-callout-contact-info {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.controls-contact-info {
+	height: 15px;
+	padding-right: 3px;
+	padding-top: 3px;
+}
+
+.bs-callout-contact-info .close {
+	right: 0px;
+}
+
+.span-posisi {
+	width : 100%;
+	overflow:hidden;
+	display:inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.action-wrap {
+  margin-top: -7px;
+  float: right;
+}
+
+.space-p {
+  padding-bottom: 22px;
+}
+
+
+/* Table */
+.table-common td {
+  vertical-align: top;
+}
+
+th {
+  text-align: center;
+  vertical-align: middle !important;
+}
+.th-no {
+  width: 25px;
+}
+.th-aksi {
+  width: 115px;
+}
+
+/*affix*/
+.affix {
+  position: fixed;
+  z-index: 1000;
+}
+#contentHead.affix {
+  top: 30px;
+}
+.action-wrap.affix {
+  right: 30px;
+  bottom: 30px;
+  text-align: right;
+}
+.action-wrap.affix > span {
+  display: block;
+  margin-top: 5px;
+}
+.action-wrap.affix > span > .btn {
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+/*Data tables*/
+div.dataTables_wrapper div.dataTables_paginate {
+  text-align:inherit;
+	float: right;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	padding: 0px;
+	border-color: transparent;
+}
+/* utilities */
+.no-padding {
+  padding: 0px 0px 0px 0px !important;
+}
+.no-margin {
+  margin: 0px 0px 0px 0px !important;
+}
+
+/*same as visible-xs*/
+@media (max-width: 768px) {
+  #contentHead.affix {
+    top: 15px;
+  }
+  .action-wrap.affix {
+    right: 20px;
+    bottom: 20px;
+  }
+  .action-wrap.affix > span > .btn {
+    border-radius: 100%;
+    font-size: 20px;
+    padding: 12px 18px;
+  }
+}

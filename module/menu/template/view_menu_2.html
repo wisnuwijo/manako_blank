@@ -1,0 +1,26 @@
+<!-- patTemplate:tmpl name="content" -->
+            <div class="hidden" id="user-realname-side">{USER_REALNAME}</div> 
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="<!-- patTemplate:gtfwgeturl module="home" sub="home" action="view" type="html" params=""  / -->"><i class="fa fa-dashboard fa-fw"></i>&nbsp;Home</a>
+                    </li>
+                    <!-- patTemplate:tmpl name="nav_left" -->
+                    <li>
+                        <a href="{LEFT_NAV}"><i class="fa {LEFT_NAV_ICON} fa-fw"></i>&nbsp;{LEFT_NAV_VALUE}<span class="fa arrow"></span></a>
+						<!-- patTemplate:tmpl name="sub_nav" visibility="hidden" -->
+                        <ul class="nav nav-second-level">
+							<!-- patTemplate:tmpl name="sub_nav_item" -->
+							<li><a href="{LEFT_SUB_NAV}" class="xhr dest_subcontent-element"><i class="fa {LEFT_SUB_NAV_ICON} fa-fw"></i>&nbsp;{LEFT_SUB_NAV_VALUE}</a></li>
+							<!-- /patTemplate:tmpl -->
+                        </ul>
+                        <!-- /.nav-second-level -->
+						<!-- /patTemplate:tmpl -->
+                    </li>
+                    <!-- /patTemplate:tmpl -->
+                </ul>
+                <!-- /#side-menu -->
+            </div>
+            <!-- /.sidebar-collapse -->
+
+<!-- /patTemplate:tmpl -->

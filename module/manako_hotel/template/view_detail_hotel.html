@@ -1,0 +1,90 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Hotel</h2>
+    </div>
+</div>
+
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {JUDUL} Hotel
+                <p class="action-wrap">
+                    <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Kembali</a>
+                    <a href="{URL_EDIT}" class="xhr dest_subcontent-element btn btn-info">Edit</a>
+                </p> 
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12 col-md-6">    
+                  <!-- patTemplate:tmpl name="data_Hotel_item" -->   
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Nama Hotel</label>
+                        <div class="col-sm-8">
+                            <p>{HOTEL_HOTELNAMA}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Alamat Hotel</label>
+                        <div class="col-sm-8">
+                            <p>{HOTEL_HOTELALAMAT}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Provinsi Hotel</label>
+                        <div class="col-sm-8">
+                            <p>{HOTEL_PROVNAMA}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Nomor Telepon Hotel</label>
+                        <div class="col-sm-8">
+                            <p>{HOTEL_HOTELPHONE}</p>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Kisaran Harga Hotel</label>
+                        <div class="col-sm-8">
+                            <p>Rp {HOTEL_HOTELHARGA}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Fasilitas Hotel</label>
+                        <div class="col-sm-8">
+                            <p>{HOTEL_HOTELFASILITAS}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Keterangan Hotel</label>
+                        <div class="col-sm-8">
+                            <p>{HOTEL_HOTELKETERANGAN}</p>
+                        </div>
+                    </div>                                        
+                    <div class="row">
+                        <label class="col-sm-4 control-label">Nama Client</label>
+                        <div class="col-sm-8">
+                            <p>{HOTEL_CLIENTNAME}</p>
+                        </div>
+                    </div>
+                  <!-- /patTemplate:tmpl --> 
+                </div>
+              </div>          
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .action-wrap {
+         margin-top: -7px;
+         float: right;
+    }
+</style>
+<!-- /patTemplate:tmpl -->

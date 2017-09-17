@@ -1,0 +1,144 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Client</h2>
+    </div>
+</div>
+
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {JUDUL} Client
+            </div>
+            <div class="panel-body">   
+                <form method="POST" action="{URL_ACTION}" class="xhr_simple_form dest_subcontent-element form-horizontal" id="frmInput">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Nama Client*</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="clientName" value="{CLIENTNAME}" maxlength="200" required/>
+                            <input type="hidden" name="data-id" value="{ID}"  />
+                            <input type="hidden" name="idd" value="{IDD}"  />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Nick Client*</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="clientNick" value="{CLIENTNICK}" maxlength="20" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Kategori Client*</label>
+                        <div class="col-md-10">
+                          <!-- patTemplate:gtfwrendermodule name="clientClientCatId" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Username Gforge</label>
+                        <div class="col-md-10">
+                          <!-- patTemplate:gtfwrendermodule name="gforgeNickname" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Provinsi/Kota Client*</label>
+                        <div class="col-md-10">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <!-- patTemplate:gtfwrendermodule name="kotaProvKode" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                            </div>
+                            <div class="col-md-6">
+                              <select name="clientKotaKode" id="clientKotaKode" class="input-select2 form-control" data-placeholder="Pilih Kabupaten/Kota" disabled="">
+                                  <option value=""></option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Status Client*</label>
+                        <div class="col-md-10">
+                          <!-- patTemplate:gtfwrendermodule name="clientStatus" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-center">
+                            <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Batal</a>
+                            <button class="btn btn-success" type="submit">Simpan</button>
+                        </div>
+                    </div>   
+                </form>        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>Petunjuk:</strong>
+      </div>
+      <div class="panel-body" style="width: 1000px;">
+        <div class="row">
+          <div class="col-lg-6" style="width: 1000px;">
+            <div class="petunjuk-area">
+              <ul>
+               <li>Tanda * menunjukkan bahwa field tersebut harus diisi. </li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<script type="text/javascript">
+ 
+  var dropdownProv = $('#kotaProvKode');
+  var dropdownKota = $('#clientKotaKode');
+  var dataKota     = {DATAKOTA};
+  var currentKota  = "{CURRENTKOTA}";                       
+  var items        = [];
+  var selProvId    = "";
+  var kotaList     = 0; 
+  var kotaListLen; 
+  var content; 
+  dropdownProv.change(function() {
+    items.length   = 0;
+    selProvId      = dropdownProv.val();
+    if (selProvId == "") {
+      kotaList  = 0;
+      kotaListLen  = 0;
+      dropdownKota.attr("disabled",true);
+    } else {
+      kotaList     = dataKota[selProvId];
+      kotaListLen  = Object.keys(kotaList).length;
+      dropdownKota.attr("disabled",false);
+    }
+    dropdownKota.empty().val("").trigger("change");
+
+    items.push('<option value=""></option>');
+    for (var i = 0; i < kotaListLen; i++) {
+      items.push('<option value="'+kotaList[i]["kota_id"]+'">'+kotaList[i]["kota_nama"]+'</option>');
+    };
+
+    content = items.join("");
+    dropdownKota.append(content);
+  }).trigger("change");
+
+  dropdownKota.select2({
+      language : "id",
+      width : "100%",
+
+  }).val(currentKota).trigger("change");
+</script>
+<!-- /patTemplate:tmpl -->

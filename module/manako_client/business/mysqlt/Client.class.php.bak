@@ -1,0 +1,75 @@
+<?php
+/** 
+* @author Abdul R. Wahid
+* @copyright Copyright (c) 2015, PT Gamatechno Indonesia
+* @license http://gtfw.gamatechno.com/#license
+**/
+
+class Account extends Database {
+
+   protected $mSqlFile= 'module/account/business/mysqlt/account.sql.php';
+   
+   function __construct($connectionNumber=0) {
+      parent::__construct($connectionNumber);
+      //$this->setDebugOn();
+   }
+   
+//===GET===  
+   function GetDataAccount($accountName, $accountNick) {
+      
+      //$result = $this->Open($this->mSqlQueries['get_data_account'], array('%'.$accountName.'%','%'.$accountNick.'%'));
+      $result = $this->Open($this->mSqlQueries['get_data_account_with_gforge'], array('%'.$accountName.'%','%'.$accountNick.'%'));
+      return $result;
+   }
+
+   function GetDataAccountById($id) {
+      //$result = $this->Open($this->mSqlQueries['get_data_account_by_id'], array($id));
+      $result = $this->Open($this->mSqlQueries['get_data_account_by_id_with_gforge'], array($id));
+      return $result;
+   }
+
+   function GetUnrelGforge() {
+      $result  = $this->Open($this->mSqlQueries['get_unrel_gforge'], array());
+      return $result;
+   }
+
+   function DoAddAccount($nick, $name, $stats) {
+      $result = $this->Execute($this->mSqlQueries['do_add_account'], array($nick, $name, $stats));
+      return $result;
+   }
+   function GetCountDuplicateNickAdd($nick) {
+      $result  = $this->Open($this->mSqlQueries['get_count_duplicate_nick_add'], array($nick));
+      return $result;
+   }
+   function DoAddRel($ac, $gf) {
+      $result = $this->Execute($this->mSqlQueries['do_add_rel'], array($ac, $gf));
+      return $result;
+   }
+   function DoDelRel($accountId) {
+      $result = $this->Execute($this->mSqlQueries['do_del_rel'], array($accountId));
+      return $result;
+   }
+
+   function DoUpdateAccount($nick, $name, $stats, $id) {
+      $result = $this->Execute($this->mSqlQueries['do_update_account'], array($nick, $name, $stats, $id));
+      return $result;
+   }
+   function GetCountDuplicateNick($nick, $id) {
+      $result  = $this->Open($this->mSqlQueries['get_count_duplicate_nick'], array($nick, $id));
+      return $result;
+   }
+
+   function DoStatusChange($rule,$id) {
+      $result = $this->Execute($this->mSqlQueries['do_status_change'], array($rule,$id));
+      return $result;
+   }
+   function DoDeleteAccount($id) {
+      $result = $this->Execute($this->mSqlQueries['do_delete_account'], array($id));
+      return $result;
+   }
+
+   function GetMaxId() {
+      $result  = $this->Open($this->mSqlQueries['get_max_id'], array());
+      return $result;
+   }
+}

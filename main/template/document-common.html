@@ -1,0 +1,107 @@
+<!-- patTemplate:tmpl name="document" -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><!-- patTemplate:gtfwgetconfig config="organization" name="application_name" / --></title>
+
+    <script type="text/javascript" src="js/gtfw_js.php"></script>
+    <script type="text/javascript" src="js/loader.js"></script>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Plugins CSS - Include with every page -->
+    <link href="css/plugins/pace/minimal.css" rel="stylesheet">
+    <link href="css/plugins/select2/select2.min.css" rel="stylesheet">
+    <link href="css/plugins/datepicker/datepicker3.css" rel="stylesheet">
+    <link href="css/plugins/jstree/themes/default/style.min.css" rel="stylesheet">
+
+    <!-- Datatable -->
+    <link href="main/lib/datatables/css/dataTables.bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="main/lib/datatables/css/dataTables.tableTools.css" type="text/css" rel="stylesheet">
+    <link href="main/lib/datatables/extensions/Buttons/css/buttons.dataTables.min.css" type="text/css" rel="stylesheet">
+    <!-- <link href="main/lib/datatables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet"> -->
+    <!--<link href="main/lib/datatables/extensions/FixedHeader/css/fixedHeader.bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- Custom & Theme CSS - Include with every page -->
+    <link href="css/wangi.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/template/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/plugins/template/skin-green.min.css">
+
+    <script src="js/jquery-1.10.2.js"></script>
+
+</head>
+
+<body {BODY_ATTRIBUTE} class="hold-transition skin-green">
+
+    <div id="wrapper">
+
+        <!-- patTemplate:link src="body" / -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="js/plugins/morris/morris.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+
+    <!-- Plugins Scripts - Include with every page -->
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/select2/select2.min.js"></script>
+    <script src="js/plugins/select2/i18n/id.js"></script>
+    <script src="js/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="js/plugins/datepicker/locales/bootstrap-datepicker.id.js"></script>
+    <script src="js/plugins/jstree/jstree.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="main/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="main/lib/datatables/js/dataTables.tableTools.js"></script>
+    <script src="main/lib/datatables/js/dataTables.bootstrap.min.js"></script>
+    <script src="main/lib/datatables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+    <script src="main/lib/datatables/extensions/Buttons/js/buttons.flash.min.js"></script>
+    <script src="main/lib/datatables/extensions/Buttons/js/buttons.html5.min.js"></script>
+    <script src="main/lib/datatables/extensions/Buttons/js/buttons.bootstrap.min.js"></script>
+    <script src="main/lib/datatables/extensions/Buttons/js/buttons.print.min.js"></script>
+    <script src="main/lib/datatables/extensions/Buttons/js/buttons.colVis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <!--<script src="main/lib/datatables/extensions/FixedHeader/js/dataTables.fixedHeader.min.js"></script>-->
+    <!--<script src="js/plugins/jquery.bootpag.min.js"></script>-->
+    <script type="text/javascript">
+        nameSide = document.getElementById("user-realname-side");
+        nameNavi = document.getElementById("user-realname-navi");
+        nameNavi.textContent = nameSide.textContent;
+
+        Pace.options.restartOnRequestAfter = 50;
+
+    </script>
+
+    <!-- Template AdminLTE -->
+    <script src="js/plugins/tamplate/fastclick.min.js"></script>
+    <script src="js/plugins/tamplate/app.min.js"></script>
+    <script src="js/plugins/slimScroll/jquery.slimscroll.min"></script>
+
+
+</body>
+
+</html>
+<!-- /patTemplate:tmpl -->

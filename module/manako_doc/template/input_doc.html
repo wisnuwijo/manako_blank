@@ -1,0 +1,169 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Dokumen</h2>
+    </div>
+</div>
+
+<div id="warning-box" class="alert-dismissible hidden">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <span id="warning-msg"></span>
+  <ul id="warning-msg-detail"></ul>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span id="inpAct">{JUDUL}</span> Dokumen
+            </div>
+            <div class="panel-body">   
+                <form name="frminp" id="frminp" method="POST" class="form-horizontal" id="frmInput">
+                    <div class="form-group">
+                        <label for="docAppId" class="col-sm-3 control-label">Nama Aplikasi*</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="docAppId" id="docAppId">
+                              <option value="" selected=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="docDocJenisId" class="col-sm-3 control-label">Jenis Dokumen*</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="docDocJenisId" id="docDocJenisId">
+                              <option value="" selected=""></option>
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="docUrl" class="col-sm-3 control-label">Url Dokumen*</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="docUrl" name="docUrl" maxlength="255" required/>
+                        </div>
+                    </div>                     
+                    <div class="form-group">
+                        <div class="text-center">
+                            <a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger">Batal</a>
+                            <button class="btn btn-success" type="submit">Simpan</button>
+                        </div>
+                    </div> 
+                </form>        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>Petunjuk:</strong>
+      </div>
+      <div class="panel-body" style="width: 1000px;">
+        <div class="row">
+          <div class="col-lg-6" style="width: 1000px;">
+            <div class="petunjuk-area">
+              <ul>
+               <li>Tanda * menunjukkan bahwa field tersebut harus diisi. </li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<script type="text/javascript">
+Pace.options.startOnPageLoad = false;
+
+var inpAct          = $('#inpAct').text();
+var frmInp          = $("#frminp");
+var formURL         = '{URL_ACTION}';
+var postData;
+var urlListApp      = '{URL_LISTAPP}';
+var urlListDocJenis = '{URL_LISTDOCJENIS}';
+var urlValue        = '{URL_VALUE}';
+var urlRedirect     = '{URL_CANCEL}{URL_L}ascomponent=1';
+var wBox            = $('#warning-box');
+var wMsg            = $('#warning-msg');
+var wMsgDet         = $('#warning-msg-detail');
+var formGroup       = $('.form-group');
+
+//callback handler for form submit
+
+frmInp.submit(function(e) {
+    postData = $(this).serializeArray();
+    Pace.track(function(){
+      $.ajax({
+          url : formURL,
+          type: "POST",
+          data : postData,
+          success:function(result) { 
+              if (result.status == 201) {
+                GtfwAjax.replaceContentWithUrl('subcontent-element', urlRedirect);
+                alert(result.message);
+              } else {
+                wMsg.empty();
+                wMsgDet.empty();
+                formGroup.each(function(){this.className = "form-group"})
+                wBox.removeClass('hidden').addClass('alert alert-danger');
+                wMsg.text(result.message);
+                $.each(result.data, function(k, v) {
+                  $('#'+k).closest('.form-group').addClass('has-error');
+                  label = $('label[for="'+k+'"]').text().replace('*','');
+                  wMsgDet.append('<li>'+label+' '+v+'</li>');
+                })
+              };
+          },
+          error: function(data) {
+              alert('Maaf aku gak bisa sama-sama kamu lagi, koneksi kita putus ! T-T');
+          }
+      });
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+});
+
+// Get form data and value
+$(document).ready(function() {
+
+  Pace.track(function(){
+    $.getJSON(urlListApp, function(result){
+      $('#docAppId').select2({
+        placeholder: "Pilih Aplikasi",
+        allowClear: true,
+        language : "id",
+        width : "100%",
+        data : result.data
+      }).val('').trigger("change");
+
+      $.getJSON(urlListDocJenis, function(result){
+        $('#docDocJenisId').select2({
+          placeholder: "Pilih Jenis Dokumen",
+          allowClear: true,
+          language : "id",
+          width : "100%",
+          data : result.data
+        }).val('').trigger("change");
+
+        if (inpAct == 'Ubah') {
+          $.getJSON(urlValue,
+            function (result) {
+              $.each(result.data[0], function(k, v) {
+                $('#'+k).val(v).trigger("change");
+              })
+            })
+        };      
+      });    
+    });  
+  });
+
+})
+
+</script>
+
+<!-- /patTemplate:tmpl -->

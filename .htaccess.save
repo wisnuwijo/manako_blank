@@ -1,0 +1,24 @@
+# # # # # # # # # # # # # # # 
+# URL REWRITE 		 		#
+# Author : Abdul R. Wahid	#
+# # # # # # # # # # # # # # #
+
+# == RULES ==
+
+# Turn On Rewrite Engine
+RewriteEngine on
+RewriteBase /~magang/project/manako/
+
+# -- Rule for short url --
+RewriteCond %{REQUEST_URI}  !(css|js|font-awesome|fonts|images) [NC]
+RewriteRule ^(.*)/?$ index.php?sm=$1 [L,QSA]
+
+# == HELP ==
+
+# -- Rules Help --
+# domain.com/module_nick/
+
+# -- Example --
+# Submodule with nick apps
+# will have this friendly url :
+# manako.com/apps/

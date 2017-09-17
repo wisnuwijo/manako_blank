@@ -1,0 +1,25 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <!-- patTemplate:tmpl name="icon_menu" type="SimpleCondition" requiredvars="LINK_URL" -->
+    <div class="col-xs-6 col-sm-6 col-md-3">
+        <a href="{LINK_URL}" class="xhr dest_subcontent-element menu-link" {MOUSE_UP}>
+            <div class="panel menu-panel btn-default">
+                <div class="panel-body text-center">
+                    <i class="fa fa-5x {ICON_NAME}"></i>
+                    <h4>{LINK_NAME}</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- /patTemplate:tmpl -->
+</div>
+
+<style>
+    .menu-panel {
+        color: #666666;
+    }
+    .menu-link:hover {
+        text-decoration: none;
+    }
+</style>
+<!-- /patTemplate:tmpl -->

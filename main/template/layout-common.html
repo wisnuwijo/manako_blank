@@ -1,0 +1,82 @@
+<!-- patTemplate:tmpl name="body" -->
+
+<div class="wrapper">
+  <header class="main-header">
+    <a href="" class="logo">
+      <span class="logo-mini"><b>M</b>NK</span>
+      <span class="logo-lg"><!-- patTemplate:gtfwgetconfig config="organization" name="application_name" / --></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" id="main-menu-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav navbar-top-links">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-user fa-fw"></i>
+              <span class="hidden-xs" id="user-realname-navi"></span>&nbsp;
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-footer">
+                <a class="btn btn-default" href="<!-- patTemplate:gtfwgeturl module="login_default" sub="logout" action="do" type="html" params=""  / -->"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+              </li>
+            </ul>
+          </li>
+          <!-- User Account -->
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+            <li class="treeview">
+                <span class="pull-right-container"><!-- patTemplate:gtfwrendermodule name="menu" module="menu" submodule="menu" action="view" type="html" params="" / --><i class="fa fa-angle-left pull-right"></i></span>
+            </li>
+      </ul>
+    </section>
+  </aside>
+
+  <div class="modal fade" id="uniModal" tabindex="-1" role="dialog" aria-labelledby="uniModalTitle">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content">
+       <div id="subcontent-element">
+          <!-- patTemplate:link src="content" / -->
+       </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <!-- <b>Version</b> 2.3.5 -->
+    </div>
+    <strong>Copyright &copy; 2016 <a href="http://gamatechno.com">PT Gamatechno Indonesia</a>.</strong>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- /patTemplate:tmpl -->

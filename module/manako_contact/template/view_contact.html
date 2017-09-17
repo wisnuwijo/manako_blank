@@ -1,0 +1,144 @@
+<!-- patTemplate:tmpl name="content" -->
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Manajemen Kontak</h2>
+    </div>
+</div>
+
+<!-- patTemplate:tmpl name="warning_box" visibility="hidden" -->
+<div class="alert alert-{CLASS_PESAN}">{ISI_PESAN}</div>
+<!-- /patTemplate:tmpl -->
+
+<div class="row">
+    <div class="col-lg-12">
+       <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="acrdHeadFilter">
+            <h4 class="panel-title">
+               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#acrdClpsFilter" aria-expanded="{EXPAND}" aria-controls="acrdClpsFilter">
+                  <span class="fa fa-search"></span>
+                  &nbsp;Filter / Cari Data
+               </a>
+            </h4>
+          </div>
+          <div id="acrdClpsFilter" class="panel-collapse collapse {COLLAPSE}" role="tabpanel" aria-labelledby="acrdHeadFilter">
+            <div class="panel-body">
+               <form role="form" method="POST" action="{URL_SEARCH}" class="dataquest xhr_simple_form dest_subcontent-element" id="filterbox">
+                  <div class="row">
+                     <div class="col-md-4 col-xs-12">               
+                        <div class="form-group">
+                           <label>Nama Kontak</label>
+                           <input type="text" name="contactName" class="form-control input-sm" value="{FILTER_NAME}" size="30" />
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                           <label>Asal Kontak</label>
+                           <!-- patTemplate:gtfwrendermodule name="contactClient" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                           <label>Kelompok Posisi Kontak</label>
+                           <!-- patTemplate:gtfwrendermodule name="contactPosisi" module="combobox2" submodule="combobox2" action="view" type="html" params="" / -->
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-xs-12 text-center">
+                        <!--<div class="visible-md visible-lg space-p"></div>-->
+                        <button class="btn btn-info btn-block" type="submit">Terapkan Filter</button>
+                     </div>
+                  </div>
+               </form>                      
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Kontak
+                <p class="action-wrap">
+                    <a class="xhr dest_subcontent-element btn btn-success" href="{CONTACT_URL_ADD}" role="button" title="Tambah Kontak" tabindex="2"><span class="fa fa-plus"></span>&nbsp;Tambah</a>
+                </p>                
+            </div>
+            <div class="panel-body">
+              <div class="row">
+              <!-- patTemplate:tmpl name="data_contact" type="condition" conditionvar="CONTACT_EMPTY" -->
+                <!-- patTemplate:sub condition="YES" -->
+                  -- Data tidak ditemukan --
+                <!-- /patTemplate:sub -->
+                <!-- patTemplate:sub condition="NO" -->
+                  <!-- patTemplate:tmpl name="data_contact_item" -->
+                    
+                    <div class="col-xs-12 col-md-4">
+                      <div class="bs-callout bs-callout-default bs-callout-contact">
+                        <h4>
+                          <strong>{CONTACT_CONTACTNAMEFIRST}</strong> {CONTACT_CONTACTNAMELAST}
+                        </h4>
+                        <small>
+                          <span class="span-posisi" title="{CONTACT_POSISINAME} {CONTACT_CONTACTPOSISIDET}">{CONTACT_POSISINAME} {CONTACT_CONTACTPOSISIDET}</span><br> 
+                          <strong><a class="xhr dest_subcontent-element" href="{CONTACT_URL_CLIENT}">{CONTACT_CLIENTNAME}</a></strong>
+                        </small>
+                        <hr class="hr-sm">
+                        <p>
+                          <i class="fa fa-envelope-o fa-fw"></i> {CONTACT_CONTACTMAIL} <br>
+                          <i class="fa fa-phone fa-fw"></i> {CONTACT_CONTACTMOBILE}
+                        </p>
+                        <div class="text-right">
+                          {CONTACT_CONTACTFIELD}
+                        </div>
+                        <div class="bs-callout-controls">
+                          <button type="button" class="btn btn-default dropdown-toggle bs-callout-controls-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v fa-fw"></i></button>
+                          <ul class="dropdown-menu bs-callout-dropdown text-left">
+                            <li>
+                              <a class="xhr dest_subcontent-element" href="{CONTACT_URL_DETAIL}" title="Detail"><span class="fa fa-list-alt fa-fw"></span>&nbsp;Detail</a>
+                            </li>
+                            <li>
+                              <a class="xhr dest_subcontent-element" href="{CONTACT_URL_EDIT}" title="Ubah"><span class="fa fa-pencil fa-fw"></span>&nbsp;Ubah</a>
+                            </li>
+                            <li>
+                              <a class="xhr dest_subcontent-element" href="{CONTACT_URL_DELETE}" title="Hapus"><span class="fa fa-trash-o fa-fw"></span>&nbsp;Hapus</a> 
+                            </li>
+                          </ul>                        
+                        </div>
+                      </div>
+                    </div>
+
+                  <!-- /patTemplate:tmpl -->
+                <!-- /patTemplate:sub -->
+              <!-- /patTemplate:tmpl -->  
+              </div>          
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table-common td {
+        vertical-align: top;
+    }
+
+    .action-wrap {
+         margin-top: -7px;
+         float: right;
+    }
+
+    .space-p {
+      padding-bottom: 22px;
+    }
+
+    th {
+      text-align: center;
+      vertical-align: middle !important;
+    }
+    .th-no {
+      width: 25px;
+    }
+    .th-aksi {
+      width: 170px;
+    }    
+</style>
+<!-- /patTemplate:tmpl -->

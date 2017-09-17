@@ -1,0 +1,142 @@
+<!-- patTemplate:tmpl name="content" -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Manajemen Group</h1>  
+    </div>
+</div>
+
+<div id="warning-box" class="alert-dismissible hidden">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <span id="warning-msg"></span>
+  <ul id="warning-msg-detail"></ul>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Detail Group
+                <p class="action-wrap">
+                    <span><a href="{URL_CANCEL}" class="xhr dest_subcontent-element btn btn-danger"><span class="fa fa-arrow-left"></span><span class="hidden-xs">&nbsp;Kembali</span></a></span>
+                </p>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Informasi Umum
+                                <p class="action-wrap">
+                                    <span><a href="{URL_EDIT}" class="xhr dest_subcontent-element btn btn-info"><span class="fa fa-pencil"></span><span class="hidden-xs">&nbsp;Ubah</span></a></span>
+                                </p>                                
+                            </div>
+                            <div class="panel-body">
+                                <div id="info-gen" class="form-horizontal">
+                                  <div class="form-group">
+                                      <label for="group_name" class="col-md-2 control-label no-padding">Nama Grup*</label>
+                                      <div class="col-md-10">
+                                          <p id="group_name"></p>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="group_description" class="col-md-2 control-label no-padding">Deskripsi</label>
+                                      <div class="col-md-10">
+                                          <p id="group_description"></p>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="group_unit_kerja" class="col-md-2 control-label no-padding">Unit Kerja</label>
+                                      <div class="col-md-10">
+                                          <p id="group_unit_kerja"></p>    
+                                      </div>
+                                  </div>                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Hak akses modul
+                                <p class="action-wrap">
+                                    <span><a href="{URL_EDIT}" class="xhr dest_subcontent-element btn btn-info"><span class="fa fa-pencil"></span><span class="hidden-xs">&nbsp;Ubah</span></a></span>
+                                </p>                                
+                            </div>
+                            <div class="panel-body">
+                                <div id="info-mod"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Hak akses aplikasi
+                                <p class="action-wrap">
+                                    <span><a href="{URL_EDIT_APP}" class="xhr dest_subcontent-element btn btn-info"><span class="fa fa-pencil"></span><span class="hidden-xs">&nbsp;Ubah</span></a></span>
+                                </p>                                
+                            </div>
+                            <div class="panel-body">
+                                <div id="info-app"></div>
+                            </div>
+                        </div>
+                    </div>           
+                </div>                                                   
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+Pace.options.startOnPageLoad = false;
+
+var urlInfoGen      = '{URL_INFO_GEN}';
+var urlInfoMod      = '{URL_INFO_MOD}';
+var urlInfoApp      = '{URL_INFO_APP}';
+var urlRedirect     = '{URL_CANCEL}{URL_L}ascomponent=1';
+var wBox            = $('#warning-box');
+var wMsg            = $('#warning-msg');
+var wMsgDet         = $('#warning-msg-detail');
+var formGroup       = $('.form-group');
+
+// Get form data and value
+$(document).ready(function() {
+
+  Pace.track(function(){
+
+    $.getJSON(urlInfoGen, function (result) {
+      $.each(result.data[0], function(k, v) {
+        $('#'+k).text(v);
+      })
+    }) /*value group*/
+
+    $.getJSON(urlInfoMod, function(result){ 
+      $('#info-mod').jstree({
+        'core' : {
+            'data' : result.data
+          },
+        'plugins' : [ 'wholerow' ]
+      })
+    }) /*value mod*/
+
+    $.getJSON(urlInfoApp, function (result) {
+      var infoApp = $('#info-app');
+      var ul      = $('<ul/>');
+      infoApp.empty();
+      $.each(result.data, function(k, v) {
+        var li    = $('<li/>').text(v.gpa_app).appendTo(ul);
+      })
+      infoApp.append(ul);
+    }) /*value app*/
+
+  });
+
+})
+
+</script>
+
+<!-- /patTemplate:tmpl -->

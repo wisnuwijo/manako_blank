@@ -1,0 +1,18 @@
+<!-- patTemplate:tmpl name="content" -->
+	<!-- patTemplate:tmpl name="combobox" -->
+   <select name="{COMBO_NAME}" id="{COMBO_ID}" {CLASS} {MULTIPLE} {SIZE} {ACTION}>
+	<!-- patTemplate:tmpl name="combolist" -->
+		<option value="{COMBO_VALUE}" {COMBO_ATTR} {COMBO_SELECTED}>{COMBO}</option>
+	<!-- /patTemplate:tmpl -->
+	</select>
+	<script>
+	$(function(){
+		$("{SELECTOR}").select2({
+	        language : "id",
+	        width : "100%",
+
+	    }).trigger("change");
+	})
+	</script>
+	<!-- /patTemplate:tmpl -->
+<!-- /patTemplate:tmpl -->
